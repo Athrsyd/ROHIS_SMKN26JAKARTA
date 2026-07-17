@@ -846,228 +846,259 @@
     <!-- Script for interaction -->
     <script>
       const menuToggle = document.getElementById("menu-toggle");
-      const navDrawer = document.getElementById("nav-drawer");
-      const drawerOverlay = document.getElementById("drawer-overlay");
-      const prayerDate = document.getElementById("prayer-date");
-      const liveClock = document.getElementById("live-clock");
-      const prayerStatus = document.getElementById("prayer-status");
-      const prayerItems = Array.from(document.querySelectorAll(".prayer-item"));
-      const prayerTimeEls = {
-        subuh: document.getElementById("prayer-subuh"),
-        dzuhur: document.getElementById("prayer-dzuhur"),
-        ashar: document.getElementById("prayer-ashar"),
-        maghrib: document.getElementById("prayer-maghrib"),
-        isya: document.getElementById("prayer-isya"),
-      };
-      const prayerLabels = {
-        subuh: "Subuh",
-        dzuhur: "Dzuhur",
-        ashar: "Ashar",
-        maghrib: "Maghrib",
-        isya: "Isya",
-      };
-      const fallbackPrayerTimes = {
-        subuh: "04:21",
-        dzuhur: "11:45",
-        ashar: "14:52",
-        maghrib: "17:54",
-        isya: "19:04",
-      };
-      const prayerLocation = {
-        provinsi: "DKI Jakarta",
-        kabkota: "Kota Jakarta",
-      };
+const navDrawer = document.getElementById("nav-drawer");
+const drawerOverlay = document.getElementById("drawer-overlay");
+const prayerDate = document.getElementById("prayer-date");
+const liveClock = document.getElementById("live-clock");
+const prayerStatus = document.getElementById("prayer-status");
+const prayerItems = Array.from(document.querySelectorAll(".prayer-item"));
+const prayerTimeEls = {
+  subuh: document.getElementById("prayer-subuh"),
+  dzuhur: document.getElementById("prayer-dzuhur"),
+  ashar: document.getElementById("prayer-ashar"),
+  maghrib: document.getElementById("prayer-maghrib"),
+  isya: document.getElementById("prayer-isya"),
+};
+const prayerLabels = {
+  subuh: "Subuh",
+  dzuhur: "Dzuhur",
+  ashar: "Ashar",
+  maghrib: "Maghrib",
+  isya: "Isya",
+};
+const fallbackPrayerTimes = {
+  subuh: "04:21",
+  dzuhur: "11:45",
+  ashar: "14:52",
+  maghrib: "17:54",
+  isya: "19:04",
+};
+const prayerLocation = {
+  provinsi: "DKI Jakarta",
+  kabkota: "Kota Jakarta",
+};
 
-      function toggleDrawer() {
-        const isOpen = navDrawer.style.transform === "translateX(0px)";
-        if (isOpen) {
-          navDrawer.style.transform = "translateX(-100%)";
-          drawerOverlay.style.opacity = "0";
-          drawerOverlay.style.pointerEvents = "none";
-        } else {
-          navDrawer.style.transform = "translateX(0px)";
-          drawerOverlay.style.opacity = "1";
-          drawerOverlay.style.pointerEvents = "auto";
-        }
-      }
+function toggleDrawer() {
+  const isOpen = navDrawer.style.transform === "translateX(0px)";
+  if (isOpen) {
+    navDrawer.style.transform = "translateX(-100%)";
+    drawerOverlay.style.opacity = "0";
+    drawerOverlay.style.pointerEvents = "none";
+  } else {
+    navDrawer.style.transform = "translateX(0px)";
+    drawerOverlay.style.opacity = "1";
+    drawerOverlay.style.pointerEvents = "auto";
+  }
+}
 
-      menuToggle.addEventListener("click", toggleDrawer);
-      drawerOverlay.addEventListener("click", toggleDrawer);
+menuToggle.addEventListener("click", toggleDrawer);
+drawerOverlay.addEventListener("click", toggleDrawer);
 
-      function getJakartaParts(date = new Date()) {
-        const formatter = new Intl.DateTimeFormat("id-ID", {
-          timeZone: "Asia/Jakarta",
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        });
-        return formatter.formatToParts(date).reduce((parts, item) => {
-          if (item.type !== "literal") {
-            parts[item.type] = item.value;
-          }
-          return parts;
-        }, {});
-      }
+function getJakartaParts(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("id-ID", {
+    timeZone: "Asia/Jakarta",
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+  return formatter.formatToParts(date).reduce((parts, item) => {
+    if (item.type !== "literal") {
+      parts[item.type] = item.value;
+    }
+    return parts;
+  }, {});
+}
 
-      function getJakartaDateKey(date = new Date()) {
-        const formatter = new Intl.DateTimeFormat("en-CA", {
-          timeZone: "Asia/Jakarta",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        });
-        return formatter.format(date);
-      }
+function getJakartaDateKey(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Jakarta",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  return formatter.format(date);
+}
 
-      function getJakartaMonthYear(date = new Date()) {
-        const formatter = new Intl.DateTimeFormat("en-US", {
-          timeZone: "Asia/Jakarta",
-          month: "numeric",
-          year: "numeric",
-        });
-        return formatter.formatToParts(date).reduce((parts, item) => {
-          if (item.type !== "literal") {
-            parts[item.type] = Number(item.value);
-          }
-          return parts;
-        }, {});
-      }
+function getJakartaMonthYear(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Jakarta",
+    month: "numeric",
+    year: "numeric",
+  });
+  return formatter.formatToParts(date).reduce((parts, item) => {
+    if (item.type !== "literal") {
+      parts[item.type] = Number(item.value);
+    }
+    return parts;
+  }, {});
+}
 
-      function toMinutes(value) {
-        const [hours, minutes] = value.split(":").map(Number);
-        return hours * 60 + minutes;
-      }
+function toMinutes(value) {
+  const [hours, minutes] = value.split(":").map(Number);
+  return hours * 60 + minutes;
+}
 
-      function setPrayerHighlight(activeKey) {
-        prayerItems.forEach((item) => {
-          const isActive = item.dataset.prayer === activeKey;
-          item.classList.toggle("bg-primary-container/20", isActive);
-          item.classList.toggle("border-primary/20", isActive);
-          item.classList.toggle("border-transparent", !isActive);
+function setPrayerHighlight(activeKey) {
+  prayerItems.forEach((item) => {
+    const isActive = item.dataset.prayer === activeKey;
+    item.classList.toggle("bg-primary-container/20", isActive);
+    item.classList.toggle("border-primary/20", isActive);
+    item.classList.toggle("border-transparent", !isActive);
 
-          const label = item.querySelector("span");
-          const value = item.querySelector("span:last-child");
-          if (label && value) {
-            label.classList.toggle("text-primary", isActive);
-            label.classList.toggle("font-bold", isActive);
-            value.classList.toggle("text-primary", isActive);
-            value.classList.toggle("font-bold", isActive);
-            value.classList.toggle("text-on-surface", !isActive);
-          }
-        });
-      }
+    const label = item.querySelector("span");
+    const value = item.querySelector("span:last-child");
+    if (label && value) {
+      label.classList.toggle("text-primary", isActive);
+      label.classList.toggle("font-bold", isActive);
+      value.classList.toggle("text-primary", isActive);
+      value.classList.toggle("font-bold", isActive);
+      value.classList.toggle("text-on-surface", !isActive);
+    }
+  });
+}
 
-      function updateLiveClock() {
-        const parts = getJakartaParts();
-        prayerDate.textContent = `${parts.weekday}, ${parts.day} ${parts.month} ${parts.year}`;
-        liveClock.textContent = `${parts.hour}:${parts.minute}:${parts.second} WIB`;
-      }
+function updateLiveClock() {
+  const parts = getJakartaParts();
+  prayerDate.textContent = `${parts.weekday}, ${parts.day} ${parts.month} ${parts.year}`;
+  liveClock.textContent = `${parts.hour}:${parts.minute}:${parts.second} WIB`;
+}
 
-      function updatePrayerStatus(schedule) {
-        const parts = getJakartaParts();
-        const currentMinutes = Number(parts.hour) * 60 + Number(parts.minute);
-        const orderedPrayers = ["subuh", "dzuhur", "ashar", "maghrib", "isya"];
-        const upcomingPrayer = orderedPrayers.find(
-          (prayer) => currentMinutes < toMinutes(schedule[prayer]),
-        );
+/**
+ * Menentukan waktu sholat yang SEDANG AKTIF (bukan yang akan datang).
+ * Aktif = waktu sholat terakhir yang sudah terlewati.
+ * Kalau belum masuk Subuh sama sekali (dini hari), yang aktif adalah Isya (dari hari sebelumnya).
+ */
+function getCurrentAndNextPrayer(schedule, currentMinutes) {
+  const orderedPrayers = ["subuh", "dzuhur", "ashar", "maghrib", "isya"];
+  let current = null;
+  let next = null;
 
-        if (upcomingPrayer) {
-          setPrayerHighlight(upcomingPrayer);
-          prayerStatus.textContent = `Berikutnya ${prayerLabels[upcomingPrayer]} pukul ${schedule[upcomingPrayer]} WIB di ${prayerLocation.kabkota}.`;
-          return;
-        }
+  for (let i = 0; i < orderedPrayers.length; i++) {
+    const prayer = orderedPrayers[i];
+    if (currentMinutes >= toMinutes(schedule[prayer])) {
+      current = prayer;
+    } else {
+      next = prayer;
+      break;
+    }
+  }
 
-        setPrayerHighlight("isya");
-        prayerStatus.textContent = `Jadwal hari ini selesai. Isya terakhir hari ini pukul ${schedule.isya} WIB.`;
-      }
+  // Sebelum Subuh (dini hari): periode aktif masih Isya (semalam), berikutnya Subuh
+  if (current === null) {
+    current = "isya";
+    next = "subuh";
+  }
 
-      function renderPrayerTimes(schedule) {
-        Object.entries(schedule).forEach(([key, value]) => {
-          if (prayerTimeEls[key]) {
-            prayerTimeEls[key].textContent = value;
-          }
-        });
-        updatePrayerStatus(schedule);
-      }
+  // Setelah Isya: periode aktif Isya, berikutnya Subuh besok
+  if (next === null) {
+    next = "subuh";
+  }
 
-      async function loadPrayerTimes() {
-        try {
-          const now = new Date();
-          const jakartaMonthYear = getJakartaMonthYear(now);
-          const response = await fetch("https://equran.id/api/v2/shalat", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              provinsi: prayerLocation.provinsi,
-              kabkota: prayerLocation.kabkota,
-              bulan: jakartaMonthYear.month,
-              tahun: jakartaMonthYear.year,
-            }),
-          });
+  return { current, next };
+}
 
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
+function updatePrayerStatus(schedule) {
+  const parts = getJakartaParts();
+  const currentMinutes = Number(parts.hour) * 60 + Number(parts.minute);
+  const { current, next } = getCurrentAndNextPrayer(schedule, currentMinutes);
 
-          const payload = await response.json();
-          const todayKey = getJakartaDateKey();
-          const todaySchedule = payload?.data?.jadwal?.find(
-            (item) => item.tanggal_lengkap === todayKey,
-          );
+  setPrayerHighlight(current);
 
-          if (!todaySchedule) {
-            throw new Error("Jadwal hari ini tidak ditemukan");
-          }
+  const isAfterIsyaTonight =
+    current === "isya" && currentMinutes >= toMinutes(schedule.isya);
+  const isBeforeSubuhDawn =
+    current === "isya" && currentMinutes < toMinutes(schedule.subuh);
 
-          const schedule = {
-            subuh: todaySchedule.subuh,
-            dzuhur: todaySchedule.dzuhur,
-            ashar: todaySchedule.ashar,
-            maghrib: todaySchedule.maghrib,
-            isya: todaySchedule.isya,
-          };
+  if (isAfterIsyaTonight || isBeforeSubuhDawn) {
+    prayerStatus.textContent = `Sekarang waktu ${prayerLabels[current]}. ${prayerLabels[next]} besok pukul ${schedule[next]} WIB di ${prayerLocation.kabkota}.`;
+  } else {
+    prayerStatus.textContent = `Sekarang waktu ${prayerLabels[current]}. ${prayerLabels[next]} berikutnya pukul ${schedule[next]} WIB di ${prayerLocation.kabkota}.`;
+  }
+}
 
-          prayerStatus.textContent = `Data jadwal diambil dari EQuran.id untuk ${payload.data.kabkota}, ${payload.data.provinsi}.`;
-          renderPrayerTimes(schedule);
-        } catch (error) {
-          prayerStatus.textContent =
-            "Gagal memuat API, memakai jadwal cadangan lokal.";
-          renderPrayerTimes(fallbackPrayerTimes);
-        }
-      }
+function renderPrayerTimes(schedule) {
+  Object.entries(schedule).forEach(([key, value]) => {
+    if (prayerTimeEls[key]) {
+      prayerTimeEls[key].textContent = value;
+    }
+  });
+  updatePrayerStatus(schedule);
+}
 
-      updateLiveClock();
-      loadPrayerTimes();
-      setInterval(updateLiveClock, 1000);
-      setInterval(() => {
-        const schedule = Object.fromEntries(
-          Object.entries(prayerTimeEls).map(([key, el]) => [
-            key,
-            el.textContent,
-          ]),
-        );
-        updatePrayerStatus(schedule);
-      }, 30000);
+async function loadPrayerTimes() {
+  try {
+    const now = new Date();
+    const jakartaMonthYear = getJakartaMonthYear(now);
+    const response = await fetch("https://equran.id/api/v2/shalat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        provinsi: prayerLocation.provinsi,
+        kabkota: prayerLocation.kabkota,
+        bulan: jakartaMonthYear.month,
+        tahun: jakartaMonthYear.year,
+      }),
+    });
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          if (this.getAttribute("href") !== "#") {
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) target.scrollIntoView({ behavior: "smooth" });
-          }
-          if (navDrawer.style.transform === "translateX(0px)") {
-            toggleDrawer();
-          }
-        });
-      });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const payload = await response.json();
+    const todayKey = getJakartaDateKey();
+    const todaySchedule = payload?.data?.jadwal?.find(
+      (item) => item.tanggal_lengkap === todayKey,
+    );
+
+    if (!todaySchedule) {
+      throw new Error("Jadwal hari ini tidak ditemukan");
+    }
+
+    const schedule = {
+      subuh: todaySchedule.subuh,
+      dzuhur: todaySchedule.dzuhur,
+      ashar: todaySchedule.ashar,
+      maghrib: todaySchedule.maghrib,
+      isya: todaySchedule.isya,
+    };
+
+    prayerStatus.textContent = `Data jadwal diambil dari EQuran.id untuk ${payload.data.kabkota}, ${payload.data.provinsi}.`;
+    renderPrayerTimes(schedule);
+  } catch (error) {
+    prayerStatus.textContent = "Gagal memuat API, memakai jadwal cadangan lokal.";
+    renderPrayerTimes(fallbackPrayerTimes);
+  }
+}
+
+updateLiveClock();
+loadPrayerTimes();
+setInterval(updateLiveClock, 1000);
+setInterval(() => {
+  const schedule = Object.fromEntries(
+    Object.entries(prayerTimeEls).map(([key, el]) => [key, el.textContent]),
+  );
+  updatePrayerStatus(schedule);
+}, 30000);
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (this.getAttribute("href") !== "#") {
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    }
+    if (navDrawer.style.transform === "translateX(0px)") {
+      toggleDrawer();
+    }
+  });
+});
     </script>
   </body>
 </html>
