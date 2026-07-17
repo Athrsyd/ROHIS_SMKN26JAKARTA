@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+    <meta
+      name="link-wa"
+      content="https://chat.whatsapp.com/CjohfpAmQv9IKF4fE2ADX2"
+    />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Pendaftaran Anggota - ROHIS SMKN 26 Jakarta</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -621,7 +625,7 @@
         </p>
         <a
           id="whatsapp-group-link"
-          href="https://chat.whatsapp.com/CjohfpAmQv9IKF4fE2ADX2"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-label-md text-label-md text-on-primary shadow-md active:scale-[0.98] hover:opacity-90 transition-all"
@@ -632,6 +636,7 @@
       </div>
     </div>
     <script>
+      const linkWa = document.querySelector('meta[name="link-wa"]').content;
       const now = new Date();
 
       document.getElementById("timestamp").value = now.toLocaleString("id-ID", {
@@ -643,17 +648,20 @@
       const drawerOverlay = document.getElementById("drawer-overlay");
       const successPopup = document.getElementById("success-popup");
       const closeSuccessPopup = document.getElementById("close-success-popup");
+      const buttonWa = document.getElementById("whatsapp-group-link");
 
       function openSuccessPopup() {
         successPopup.classList.remove("hidden");
         successPopup.classList.add("flex");
         successPopup.setAttribute("aria-hidden", "false");
+        buttonWa.href = linkWa;
       }
-
+      
       function closePopup() {
         successPopup.classList.add("hidden");
         successPopup.classList.remove("flex");
         successPopup.setAttribute("aria-hidden", "true");
+        buttonWa.href = '';
       }
 
       function toggleDrawer() {
