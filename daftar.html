@@ -2,13 +2,14 @@
 <html class="light" lang="id">
   <head>
     <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Pendaftaran Anggota - ROHIS SMKN 26 Jakarta</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-/>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -167,8 +168,8 @@
     >
       <div class="flex items-center gap-3">
         <img
-        src="logo.png"
-        alt="Logo ROHIS SMKN 26 Jakarta"
+          src="logo.png"
+          alt="Logo ROHIS SMKN 26 Jakarta"
           class="w-11 h-11 object-contain"
         />
         <span
@@ -188,7 +189,7 @@
           class="text-on-surface-variant dark:text-on-surface-variant px-4 py-2 flex items-center gap-2 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full font-label-md text-label-md transition-all duration-200 ease-in-out"
           href="#"
         > -->
-          <!-- <span class="material-symbols-outlined text-[20px]">event</span>
+        <!-- <span class="material-symbols-outlined text-[20px]">event</span>
           Kegiatan
         </a> -->
         <a
@@ -229,48 +230,31 @@
     >
       <div class="px-md mb-md flex items-center gap-3">
         <img
-        src="logo.png"
-        alt="Logo ROHIS SMKN 26 Jakarta"
+          src="logo.png"
+          alt="Logo ROHIS SMKN 26 Jakarta"
           class="w-9 h-9 object-contain"
         />
         <h2 class="font-headline-md text-headline-md text-primary">
           Menu Navigasi
         </h2>
       </div>
-      <nav class="hidden md:flex items-center gap-1">
+      <nav class="flex flex-col gap-1">
         <a
-          class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-2 flex items-center gap-2 font-label-md text-label-md transition-all duration-200 ease-in-out"
-          href="#"
+          class="text-on-surface-variant dark:text-on-surface-variant px-4 py-3 flex items-center gap-3 mx-2 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full font-label-md text-label-md transition-all duration-200 ease-in-out"
+          href="index.html"
         >
-          <span class="material-symbols-outlined text-[20px]">home</span>
+          <span class="material-symbols-outlined">home</span>
           Beranda
         </a>
+
         <a
-          class="text-on-surface-variant dark:text-on-surface-variant px-4 py-2 flex items-center gap-2 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full font-label-md text-label-md transition-all duration-200 ease-in-out"
+          href="#"
+          class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full mx-2 px-4 py-3 flex items-center gap-3 font-label-md text-label-md transition-all duration-200 ease-in-out"
           href="#"
         >
-          <!-- <span class="material-symbols-outlined text-[20px]">event</span>
-          Kegiatan
-        </a> -->
-        <a
-          href="/daftar.html"
-          class="text-on-surface-variant dark:text-on-surface-variant px-4 py-2 flex items-center gap-2 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full font-label-md text-label-md transition-all duration-200 ease-in-out"
-          href="#"
-        >
-          <span class="material-symbols-outlined text-[20px]"
-            >app_registration</span
-          >
+          <span class="material-symbols-outlined">app_registration</span>
           Pendaftaran
         </a>
-        <!-- <a
-          class="text-on-surface-variant dark:text-on-surface-variant px-4 py-2 flex items-center gap-2 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full font-label-md text-label-md transition-all duration-200 ease-in-out"
-          href="#"
-        >
-          <span class="material-symbols-outlined text-[20px]"
-            >contact_support</span
-          >
-          Kontak
-        </a> -->
       </nav>
     </aside>
     <main class="flex-grow pattern-overlay relative pb-xl">
@@ -293,11 +277,8 @@
         <div
           class="bg-surface-container-lowest p-md md:p-xl rounded-xl shadow-sm border border-secondary-container max-w-2xl mx-auto"
         >
-          <form  class="flex flex-col gap-md" id="registrationForm">
-           <input
-    type="hidden"
-    id="timestamp"
-    name="Timestamp">
+          <form class="flex flex-col gap-md" id="registrationForm">
+            <input type="hidden" id="timestamp" name="Timestamp" />
             <!-- Nama Lengkap -->
             <div class="flex flex-col gap-xs">
               <label
@@ -317,10 +298,10 @@
                   placeholder="Masukkan nama lengkap"
                   type="text"
                   required
-                  />
-                </div>
+                />
               </div>
-              <!-- Kelas & Email (row on md+) -->
+            </div>
+            <!-- Kelas & Email (row on md+) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div class="flex flex-col gap-xs">
                 <label
@@ -330,19 +311,19 @@
                 >
                 <div class="relative group">
                   <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary"
-                  >school</span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary"
+                    >school</span
                   >
                   <select
-                  class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface appearance-none"
-                  id="kelas"
-                  required
-                  name="Kelas"
+                    class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface appearance-none"
+                    id="kelas"
+                    required
+                    name="Kelas"
                   >
-                  <option disabled selected value="">Pilih Kelas</option>
-                  <optgroup label="Kelas X">
-                    <option value="X KGS 1">X KGS 1</option>
-                    <option value="X KGS 2">X KGS 2</option>
+                    <option disabled selected value="">Pilih Kelas</option>
+                    <optgroup label="Kelas X">
+                      <option value="X KGS 1">X KGS 1</option>
+                      <option value="X KGS 2">X KGS 2</option>
                       <option value="X TEK 1">X TEK 1</option>
                       <option value="X TEK 2">X TEK 2</option>
                       <option value="X TITL 1">X TITL 1</option>
@@ -395,14 +376,14 @@
                 >
                 <div class="relative group">
                   <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary"
-                  >mail</span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary"
+                    >mail</span
                   >
                   <input
-                  class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface"
-                  required
-                  id="email"
-                  name="Email"
+                    class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface"
+                    required
+                    id="email"
+                    name="Email"
                     placeholder="contoh@gmail.com"
                     type="email"
                   />
@@ -425,7 +406,6 @@
                   class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface"
                   id="phone"
                   required
-                  
                   name="No. Telepon"
                   placeholder="08xx xxxx xxxx"
                   type="tel"
@@ -435,9 +415,9 @@
             <!-- Alasan Masuk Rohis (Textarea) -->
             <div class="flex flex-col gap-xs">
               <label
-              class="font-label-md text-on-surface-variant ml-xs"
-              for="alasan"
-              >Alasan Masuk Rohis</label
+                class="font-label-md text-on-surface-variant ml-xs"
+                for="alasan"
+                >Alasan Masuk Rohis</label
               >
               <div class="relative group">
                 <!-- <span
@@ -448,7 +428,7 @@
                   class="w-full pl-10 pr-4 py-3 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary-container focus:ring-opacity-20 outline-none form-focus-transition text-on-surface resize-none"
                   id="alasan"
                   name="Alasan"
-                required
+                  required
                   placeholder="Ceritakan motivasi Anda..."
                   rows="4"
                 ></textarea>
@@ -540,88 +520,91 @@
       </section>
     </main>
     <!-- Footer Shell -->
-<footer
-  class="w-full px-margin-mobile md:px-margin-desktop py-lg flex flex-col lg:flex-row justify-between items-center gap-lg bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant"
->
-  <!-- Logo -->
-  <div class="flex items-center gap-3">
-    <img
-      src="logo.png"
-      alt="Logo ROHIS SMKN 26 Jakarta"
-      class="w-9 h-9 object-contain"
-    />
-
-    <div class="flex flex-col">
-      <span class="font-label-md font-bold text-primary">
-        ROHIS SMKN 26 JAKARTA
-      </span>
-
-      <p class="font-caption text-on-surface-variant">
-        © 2026 ROHIS SMKN 26 Jakarta. All Rights Reserved.
-      </p>
-    </div>
-  </div>
-
-  <!-- Menu -->
-  <div class="flex gap-6">
-    <a
-      class="font-caption text-on-surface-variant hover:text-primary transition-colors"
-      href="index.html#program"
+    <footer
+      class="w-full px-margin-mobile md:px-margin-desktop py-lg flex flex-col lg:flex-row justify-between items-center gap-lg bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant"
     >
-      Aktivitas Kami
-    </a>
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img
+          src="logo.png"
+          alt="Logo ROHIS SMKN 26 Jakarta"
+          class="w-9 h-9 object-contain"
+        />
 
-    <a
-      class="font-caption text-on-surface-variant hover:text-primary transition-colors"
-      href="#"
-    >
-      Bergabung dengan Rohis
-    </a>
-  </div>
+        <div class="flex flex-col">
+          <span class="font-label-md font-bold text-primary">
+            ROHIS SMKN 26 JAKARTA
+          </span>
 
-  <!-- Social Media -->
-  <div class="flex items-center gap-4">
+          <p class="font-caption text-on-surface-variant">
+            © 2026 ROHIS SMKN 26 Jakarta. All Rights Reserved.
+          </p>
+        </div>
+      </div>
 
-    <a
-      href="https://www.instagram.com/rohissmk26/"
-      target="_blank"
-      class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-      title="Instagram"
-    >
-      <i class="fa-brands fa-instagram text-xl"></i>
-    </a>
+      <!-- Menu -->
+      <div class="flex gap-6">
+        <a
+          class="font-caption text-on-surface-variant hover:text-primary transition-colors"
+          href="index.html#program"
+        >
+          Aktivitas Kami
+        </a>
 
-    <a
-      href="https://www.tiktok.com/@rohis26jkt"
-      target="_blank"
-      class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-      title="TikTok"
-    >
-      <i class="fa-brands fa-tiktok text-xl"></i>
-    </a>
+        <a
+          class="font-caption text-on-surface-variant hover:text-primary transition-colors"
+          href="#"
+        >
+          Bergabung dengan Rohis
+        </a>
+      </div>
 
+      <!-- Social Media -->
+      <div class="flex items-center gap-4">
+        <a
+          href="https://www.instagram.com/rohissmk26/"
+          target="_blank"
+          class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+          title="Instagram"
+        >
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </a>
 
-    <a
-      href="https://whatsapp.com/channel/0029VbB6efd42DcaXjIWSX0z"
-      target="_blank"
-      class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
-      title="WhatsApp"
-    >
-      <i class="fa-brands fa-whatsapp text-xl"></i>
-    </a>
+        <a
+          href="https://www.tiktok.com/@rohis26jkt"
+          target="_blank"
+          class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+          title="TikTok"
+        >
+          <i class="fa-brands fa-tiktok text-xl"></i>
+        </a>
 
-  </div>
-</footer>
+        <a
+          href="https://whatsapp.com/channel/0029VbB6efd42DcaXjIWSX0z"
+          target="_blank"
+          class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+          title="WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+        </a>
+      </div>
+    </footer>
     <div
       id="success-popup"
       class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/50 px-4"
       aria-hidden="true"
     >
-      <div class="w-full max-w-md rounded-2xl bg-surface p-md shadow-2xl border border-outline-variant">
+      <div
+        class="w-full max-w-md rounded-2xl bg-surface p-md shadow-2xl border border-outline-variant"
+      >
         <div class="flex items-start justify-between gap-4">
           <div>
-            <p class="font-label-md text-label-md text-primary">Pendaftaran berhasil</p>
-            <h2 class="mt-1 font-headline-md text-headline-md text-on-surface">Gabung grup WhatsApp</h2>
+            <p class="font-label-md text-label-md text-primary">
+              Pendaftaran berhasil
+            </p>
+            <h2 class="mt-1 font-headline-md text-headline-md text-on-surface">
+              Gabung grup WhatsApp
+            </h2>
           </div>
           <button
             type="button"
@@ -633,7 +616,8 @@
           </button>
         </div>
         <p class="mt-3 text-body-md text-on-surface-variant">
-          Data kamu sudah kami terima. Silakan masuk ke grup WhatsApp berikut untuk info lanjutan.
+          Data kamu sudah kami terima. Silakan masuk ke grup WhatsApp berikut
+          untuk info lanjutan.
         </p>
         <a
           id="whatsapp-group-link"
@@ -650,10 +634,9 @@
     <script>
       const now = new Date();
 
-document.getElementById("timestamp").value =
-    now.toLocaleString("id-ID", {
-        timeZone: "Asia/Jakarta"
-    });
+      document.getElementById("timestamp").value = now.toLocaleString("id-ID", {
+        timeZone: "Asia/Jakarta",
+      });
 
       const menuToggle = document.getElementById("menu-toggle");
       const navDrawer = document.getElementById("nav-drawer");
@@ -685,70 +668,60 @@ document.getElementById("timestamp").value =
           drawerOverlay.style.pointerEvents = "auto";
         }
       }
-const form = document.getElementById("registrationForm");
+      const form = document.getElementById("registrationForm");
 
-form.addEventListener("submit", async function (e) {
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalHTML = btn.innerHTML;
 
-    const btn = form.querySelector('button[type="submit"]');
-    const originalHTML = btn.innerHTML;
-
-    btn.disabled = true;
-    btn.innerHTML = `
+        btn.disabled = true;
+        btn.innerHTML = `
         <span class="material-symbols-outlined animate-spin">sync</span>
         Mengirim...
     `;
 
-    try {
-        const formData = new FormData(form);
+        try {
+          const formData = new FormData(form);
 
-        const response = await fetch(
+          const response = await fetch(
             "https://script.google.com/macros/s/AKfycbxPPuj6h4AjzoqPCCt6D2SVtvQr4hXTDf_nYHYb1StZ7-7FQk8geOVmcsqOs4lx9Ya-/exec",
             {
-                method: "POST",
-                body: formData
-            }
-        );
+              method: "POST",
+              body: formData,
+            },
+          );
 
-        const result = await response.json();
+          const result = await response.json();
 
-        console.log(result);
+          console.log(result);
 
-        if (result.status === "success") {
-
+          if (result.status === "success") {
             btn.innerHTML = `
                 <span class="material-symbols-outlined">check_circle</span>
                 Berhasil
             `;
 
             form.reset();
-          openSuccessPopup();
+            openSuccessPopup();
 
             setTimeout(() => {
-                btn.disabled = false;
-                btn.innerHTML = originalHTML;
+              btn.disabled = false;
+              btn.innerHTML = originalHTML;
             }, 2500);
-
-        } else {
-
+          } else {
             alert(result.message);
 
             btn.disabled = false;
             btn.innerHTML = originalHTML;
+          }
+        } catch (err) {
+          console.error(err);
 
+          alert(JSON.stringify(err));
         }
-
-    } catch(err){
-
-    console.error(err);
-
-    alert(JSON.stringify(err));
-
-}
-
-});
-
+      });
 
       menuToggle.addEventListener("click", toggleDrawer);
       drawerOverlay.addEventListener("click", toggleDrawer);
@@ -758,8 +731,6 @@ form.addEventListener("submit", async function (e) {
           closePopup();
         }
       });
-
-  
     </script>
   </body>
 </html>
