@@ -264,7 +264,7 @@
     <main class="flex-grow pattern-overlay relative pb-xl">
       <!-- Hero Section / Title -->
       <div
-        class="px-margin-mobile md:px-margin-desktop pt-lg pb-md max-w-5xl mx-auto"
+        class="px-margin-mobile md:px-margin-desktop pt-lg pb-md max-w-5xl mx-auto" data-aos="fade-right"
       >
         <h1
           class="font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg text-primary mb-xs"
@@ -279,7 +279,7 @@
       <!-- Registration Form Container -->
       <section class="px-margin-mobile md:px-margin-desktop">
         <div
-          class="bg-surface-container-lowest p-md md:p-xl rounded-xl shadow-sm border border-secondary-container max-w-2xl mx-auto"
+          class="bg-surface-container-lowest p-md md:p-xl rounded-xl shadow-sm border border-secondary-container max-w-2xl mx-auto"  data-aos="fade-up"
         >
           <form class="flex flex-col gap-md" id="registrationForm">
             <input type="hidden" id="timestamp" name="Timestamp" />
@@ -452,14 +452,14 @@
       <!-- Core Values Section -->
       <section class="mt-xl px-margin-mobile md:px-margin-desktop">
         <h2
-          class="font-label-md text-on-surface-variant text-center mb-md uppercase tracking-widest"
+          class="font-label-md text-on-surface-variant text-center mb-md uppercase tracking-widest" data-aos="zoom-in"
         >
           Nilai Inti Kami
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-sm max-w-5xl mx-auto">
           <!-- Value 1 -->
           <div
-            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"
+            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"  data-aos="fade-up" data-aos-delay="100"
           >
             <div
               class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0"
@@ -480,7 +480,7 @@
           </div>
           <!-- Value 2 -->
           <div
-            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"
+            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"  data-aos="fade-up" data-aos-delay="200"
           >
             <div
               class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0"
@@ -501,7 +501,7 @@
           </div>
           <!-- Value 3 -->
           <div
-            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"
+            class="bg-secondary-container/50 border border-secondary-container p-4 rounded-xl flex items-center gap-4 md:flex-col md:text-center md:items-center"  data-aos="fade-up" data-aos-delay="300"
           >
             <div
               class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0"
@@ -740,5 +740,18 @@
         }
       });
     </script>
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration: 700,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 80
+});
+</script>
+
   </body>
 </html>
